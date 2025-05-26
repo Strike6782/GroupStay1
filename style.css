@@ -58,7 +58,8 @@ header nav {
 /* Hero Sectie */
 .hero {
     /* VERVANG 'JOUW_HERO_ACHTERGROND_URL_HIER' MET DE URL NAAR JULLIE ACHTERGRONDAFBEELDING */
-    background-image: linear-gradient(rgba(20, 89, 29, 0.75), rgba(20, 89, 29, 0.75)), url('[https://placehold.co/1500x800/eef0f2/14591d?text=Groepsaccommodatie+Sfeerbeeld](https://placehold.co/1500x800/eef0f2/14591d?text=Groepsaccommodatie+Sfeerbeeld)');
+    /*background-image: linear-gradient(rgba(20, 89, 29, 0.75), rgba(20, 89, 29, 0.75)), url('images/hero_background2.png');*/
+    background-image: url('images/hero_background2.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -75,7 +76,8 @@ header nav {
 
 .hero-content {
     max-width: 750px;
-    background-color: rgba(0, 0, 0, 0.1); /* Subtiele donkere achtergrond voor content voor extra contrast */
+    /* background-color: rgba(20, 89, 29, 0.5); /* Subtiele donkere achtergrond voor content voor extra contrast */
+    background-color: rgba(0,0,0,0.38);
     padding: 20px;
     border-radius: 8px;
 }

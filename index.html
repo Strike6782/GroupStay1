@@ -6,12 +6,13 @@
     <title>GroupStay - Vind en Verhuur Groepsaccommodaties</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/Only logo.png">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <img src="https://placehold.co/150x50/14591D/EEF0F2?text=GroupStay&font=inter" alt="GroupStay Logo" id="logo-img">
+                <img src="images/Logo white tekst small.png" alt="GroupStay Logo" id="logo-img">
             </div>
             <div class="language-switcher">
                 <button id="lang-nl" class="active">NL</button> |
@@ -22,19 +23,25 @@
 
     <main>
         <section class="hero">
-            <div class="hero-content">
-                <h1 data-lang-key="heroTitle">Ontdek GroupStay</h1>
-                <p data-lang-key="heroSubtitle">Hét platform waar verenigingen gebouwen verhuren én vinden voor kampen, evenementen en meer. Binnenkort live!</p>
 
-                <div class="hero-newsletter">
-                    <h3 data-lang-key="newsletterTitleHero">Blijf als eerste op de hoogte!</h3>
-                    <form id="newsletter-form">
-                        <input type="email" id="email" name="email" placeholder-key="newsletterPlaceholder" placeholder="Jouw e-mailadres" required>
-                        <button type="submit" class="cta-button" data-lang-key="newsletterButton">Aanmelden</button>
-                    </form>
-                    <p id="newsletter-message" class="newsletter-message"></p>
-                </div>
-            </div>
+            <iframe id="brevo-iframe-nl"
+                width="600px" 
+                height="700px" 
+                src="https://sibforms.com/serve/MUIFAC-xMWfONMG3YJxR1TwPyv5y8ssvVMwZyRk6LuqV6HQ1SdrosajHnjIt8Jx3DTto9OSFNs0JbWokIRKnhhXcGbTT5NBvkhaeUHeUr9WCwnFDXupZV7Ce_563_VFJqKt92oWAXHQALE56oYcWs20reuGsDhntg3AxVZsz4uxVPTLdVlMAhnWCuKyL2ZXNjP9Hv6h6bSbPrbv2" 
+                frameborder="0" 
+                scrolling="auto" 
+                allowfullscreen 
+                style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;">
+            </iframe>
+            <iframe id="brevo-iframe-en"
+                width="600px" 
+                height="700px" 
+                src="https://sibforms.com/serve/MUIFANRQBozcn7zteDJXQtS-tcJw66jeX2RcwDpLxGrbVSWWbgfh_x3QdsANmNVFQhmA_77ssRDdeunlQ2zP3iuAYAkOzaktKif0StFCzwZ4wEBKiNIdhAd6XnODUFNlHlAICcRDf5xGx1_38FylV0qWygtkNK63Xu5uZWQNEr1bntwEVRXlLteC6fiJvLSNX8BO1vRQZ5rbpLNH" 
+                frameborder="0" 
+                scrolling="auto" 
+                allowfullscreen 
+                style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;">
+            </iframe>
         </section>
 
         <section id="about" class="about-section">

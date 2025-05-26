@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const langNlButton = document.getElementById('lang-nl');
     const langEnButton = document.getElementById('lang-en');
-    const newsletterForm = document.getElementById('newsletter-form');
-    const emailInput = document.getElementById('email');
-    const newsletterMessage = document.getElementById('newsletter-message');
+    const iframeNl = document.getElementById('brevo-iframe-nl');
+    const iframeEn = document.getElementById('brevo-iframe-en');
+
     const currentYearSpan = document.getElementById('currentYear');
     const logoImg = document.getElementById('logo-img'); // Logo image element
 
@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
             newsletterSuccess: "Bedankt voor je aanmelding! Je hoort binnenkort van ons.",
             newsletterError: "Voer een geldig e-mailadres in.",
             aboutTitle: "Wat is GroupStay?",
-            aboutForLandlordsTitle: "Voor Verenigingen met een Gebouw (Verhuurders)",
+            aboutForLandlordsTitle: "Voor verenigingen met een eigen gebouw (verhuurders)",
             aboutForLandlordsText: "Heeft jouw vereniging een gebouw dat je wilt delen met anderen? GroupStay biedt je de mogelijkheid om je accommodatie eenvoudig te presenteren aan een breed netwerk van geïnteresseerde groepen en organisaties. Beheer je aanvragen, geef beschikbaarheid aan en maximaliseer de bezetting van je ruimte.",
-            aboutForRentersTitle: "Voor Zoekende Verenigingen en Organisaties (Huurders)",
+            aboutForRentersTitle: "Voor zoekende verenigingen en organisaties (huurders)",
             aboutForRentersText: "Ben je op zoek naar de ideale locatie voor je volgende kamp, vergadering, training of evenement? Met GroupStay vind je via een slim filtersysteem snel en efficiënt geschikte gebouwen. Filter op locatie, capaciteit, voorzieningen en meer. Leg direct contact met de beheerder voor een naadloze ervaring.",
             aboutFuture: "Ons platform is momenteel in ontwikkeling. We werken hard aan een intuïtieve en gebruiksvriendelijke ervaring voor zowel verhuurders als huurders.",
             footerRights: "Alle rechten voorbehouden."
@@ -44,9 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
             newsletterSuccess: "Thank you for signing up! You'll hear from us soon.",
             newsletterError: "Please enter a valid email address.",
             aboutTitle: "What is GroupStay?",
-            aboutForLandlordsTitle: "For Associations with a Building (Landlords)",
+            aboutForLandlordsTitle: "For associations with a building (landlords)",
             aboutForLandlordsText: "Does your association have a building you want to share with others? GroupStay offers you the opportunity to easily present your accommodation to a wide network of interested groups and organizations. Manage your requests, indicate availability, and maximize your space's occupancy.",
-            aboutForRentersTitle: "For Searching Associations and Organizations (Renters)",
+            aboutForRentersTitle: "For searching associations and organizations (renters)",
             aboutForRentersText: "Are you looking for the ideal location for your next camp, meeting, training, or event? With GroupStay, you can quickly and efficiently find suitable buildings via a smart filter system. Filter by location, capacity, amenities, and more. Directly contact the building manager for a seamless experience.",
             aboutFuture: "Our platform is currently under development. We are working hard to create an intuitive and user-friendly experience for both landlords and renters.",
             footerRights: "All rights reserved."
@@ -59,22 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.forEach(el => {
             const key = el.getAttribute('data-lang-key');
             if (translations[lang] && translations[lang][key]) {
-                if (el.tagName === 'INPUT' && el.hasAttribute('placeholder-key')) {
-                    el.placeholder = translations[lang][key];
-                } else {
-                    el.textContent = translations[lang][key];
-                }
+                el.textContent = translations[lang][key];
             }
         });
 
         if (lang === 'nl') {
             langNlButton.classList.add('active');
             langEnButton.classList.remove('active');
-            if (emailInput) emailInput.placeholder = translations.nl.newsletterPlaceholder;
-        } else {
+            if (iframeNl) iframeNl.style.display = 'block';
+            if (iframeEn) iframeEn.style.display = 'none';
+
+        } else { // lang === 'en'
             langEnButton.classList.add('active');
             langNlButton.classList.remove('active');
-            if (emailInput) emailInput.placeholder = translations.en.newsletterPlaceholder;
+            if (iframeNl) iframeNl.style.display = 'none';
+            if (iframeEn) iframeEn.style.display = 'block';
         }
         localStorage.setItem('preferredLanguage', lang);
     }
@@ -82,33 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     langNlButton.addEventListener('click', () => setLanguage('nl'));
     langEnButton.addEventListener('click', () => setLanguage('en'));
 
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = emailInput.value.trim();
-            const currentLang = document.documentElement.lang || 'nl';
-
-            if (validateEmail(email)) {
-                newsletterMessage.textContent = translations[currentLang].newsletterSuccess;
-                newsletterMessage.className = 'newsletter-message success';
-                emailInput.value = '';
-                console.log(`E-mail voor nieuwsbrief (niet opgeslagen): ${email}`);
-                setTimeout(() => {
-                    newsletterMessage.textContent = '';
-                    newsletterMessage.className = 'newsletter-message';
-                }, 5000);
-            } else {
-                newsletterMessage.textContent = translations[currentLang].newsletterError;
-                newsletterMessage.className = 'newsletter-message error';
-            }
-        });
-    }
-
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(String(email).toLowerCase());
-    }
-
     const preferredLanguage = localStorage.getItem('preferredLanguage');
-    setLanguage(preferredLanguage || 'nl');
+    setLanguage(preferredLanguage || 'nl'); // Default naar NL of opgeslagen voorkeur
 });
