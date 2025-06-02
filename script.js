@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const translations = {
         nl: {
-            heroTitle: "Ontdek GroupStay",
+            heroTitle: "Ontdek GroupStay - Jouw sleutel tot groepsruimtes",
             heroSubtitle: "Hét platform waar verenigingen gebouwen verhuren én vinden voor kampen, evenementen en meer. Binnenkort live!",
             newsletterTitleHero: "Blijf als eerste op de hoogte!",
             newsletterPlaceholder: "Jouw e-mailadres",
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             footerRights: "Alle rechten voorbehouden."
         },
         en: {
-            heroTitle: "Discover GroupStay",
+            heroTitle: "Discover GroupStay - Your key to group spaces",
             heroSubtitle: "The platform where associations rent out and find buildings for camps, events, and more. Coming soon!",
             newsletterTitleHero: "Be the first to know!",
             newsletterPlaceholder: "Your email address",
